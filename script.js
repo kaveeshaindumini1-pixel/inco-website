@@ -59,36 +59,8 @@ function toggleFaq(btn) {
 
 
 // ── Order plan selector ───────────────────────────────────────────
-let currentPlan = 'standard';
+const currentPlan = 'standard';
 
-function selectPlan(plan) {
-  currentPlan = plan;
-
-  // radio UI
-  document.getElementById('radio-standard').classList.toggle('selected', plan === 'standard');
-  document.getElementById('radio-student').classList.toggle('selected', plan === 'student');
-  document.getElementById('sum-standard').classList.toggle('selected-opt', plan === 'standard');
-  document.getElementById('sum-student').classList.toggle('selected-opt', plan === 'student');
-
-  // student ID field
-  const sidGroup = document.getElementById('student-id-group');
-  const sidInput = document.getElementById('f-student-id');
-  if (plan === 'student') {
-    sidGroup.style.display = 'flex';
-    sidInput.required = true;
-  } else {
-    sidGroup.style.display = 'none';
-    sidInput.required = false;
-  }
-
-  // totals
-  const sub  = plan === 'student' ? 2500 : 3000;
-  const del  = plan === 'student' ? 0 : 350;
-  const total = sub + del;
-  document.getElementById('subtotal').textContent     = `Rs. ${sub.toLocaleString()}`;
-  document.getElementById('delivery-cost').textContent = del === 0 ? 'Free' : `Rs. ${del}`;
-  document.getElementById('grand-total').textContent   = `Rs. ${total.toLocaleString()}`;
-}
 
 
 // ── Order form submission ─────────────────────────────────────────
@@ -110,7 +82,6 @@ function submitOrder(e) {
   console.log('Order submitted:', {
     plan: currentPlan,
     name, phone, email, address, district,
-    studentId: document.getElementById('f-student-id').value,
     notes: document.getElementById('f-notes').value
   });
 
