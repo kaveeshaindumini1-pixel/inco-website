@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alino — Smart Posture Device</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo"><img src="alino-logo.png" alt="Alino" class="nav-logo-img"></a>
+    <ul class="nav-links">
+      <li><a href="#product">Product</a></li>
+      <li><a href="#app">App</a></li>
+      <li><a href="#howto">How to use</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#order">Order</a></li>
+    </ul>
+    <a href="#order" class="nav-cta">Order now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow"><span class="dot"></span> Now available in Sri Lanka</div>
+      <h1>Your back<br>will thank<br><em>you</em> later.</h1>
+      <p class="hero-sub">Alino is a compact wearable that tracks your spine angle in real time and vibrates the moment you slouch — paired with an app that shows your posture analytics and sends smart notifications.</p>
+      <div class="hero-price-row">
+        <div class="price-tag">
+          <span class="price-from">Starting from</span>
+          <span class="price-amount">Rs. 3,000</span>
+          <span class="price-note">One-time. No hidden fees.</span>
+        </div>
+        <a href="#order" class="btn-hero">Order yours →</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Product image -->
+      <div class="product-img-wrap">
+        <img src="alino-device.png" alt="Alino Smart Posture Device in premium packaging" class="product-img">
+        <div class="img-badge-tl">Smart Posture Device</div>
+        <div class="img-badge-br"><span class="dot"></span> Live demo below</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-num">100×</span><span class="trust-label">Readings per second</span></div>
+    <div class="trust-div"></div>
+    <div class="trust-item"><span class="trust-num">52mm</span><span class="trust-label">Compact size</span></div>
+    <div class="trust-div"></div>
+    <div class="trust-item"><span class="trust-num">App</span><span class="trust-label">Analytics included</span></div>
+    <div class="trust-div"></div>
+    <div class="trust-item"><span class="trust-num">Rs. 3,000</span><span class="trust-label">One-time price</span></div>
+  </div>
+</div>
+
+<!-- PRODUCT SHOWCASE -->
+<section class="showcase-section">
+  <div class="section-inner">
+    <div class="showcase-grid">
+      <div class="showcase-img-col">
+      <!-- Live posture card -->
+      <div class="device-card" style="max-width: 100%; padding: 48px 32px;">
+        <div class="device-top-label">LIVE POSTURE MONITOR</div>
+        <div class="spine-wrap" style="margin: 20px 0;">
+          <svg width="135" height="255" viewBox="0 0 90 170">
+            <!-- Lower body -->
+            <rect x="39" y="78" width="12" height="13" rx="3" fill="#3B82F6" opacity="0.58"/>
+            <rect x="39" y="94" width="12" height="13" rx="3" fill="#3B82F6" opacity="0.46"/>
+            <rect x="39" y="110" width="12" height="13" rx="3" fill="#3B82F6" opacity="0.34"/>
+            <line x1="18" y1="132" x2="45" y2="127" stroke="#4A5568" stroke-width="2" stroke-linecap="round"/>
+            <line x1="72" y1="132" x2="45" y2="127" stroke="#4A5568" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Upper body -->
+            <g id="spine" style="transform-origin: 45px 78px;">
+              <circle cx="45" cy="16" r="13" fill="none" stroke="#3B82F6" stroke-width="2.5"/>
+              <rect x="39" y="30" width="12" height="13" rx="3" fill="#3B82F6" opacity="0.95"/>
+              <rect x="39" y="46" width="12" height="13" rx="3" fill="#3B82F6" opacity="0.82"/>
+              <rect x="39" y="62" width="12" height="13" rx="3" fill="#3B82F6" opacity="0.70"/>
+              <line x1="10" y1="46" x2="45" y2="36" stroke="#4A5568" stroke-width="2" stroke-linecap="round"/>
+              <line x1="80" y1="46" x2="45" y2="36" stroke="#4A5568" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="45" cy="62" r="6" fill="#3B82F6">
+                <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/>
+              </circle>
+            </g>
+          </svg>
+        </div>
+        <div class="device-angle" id="angle-display" style="font-size: 64px;">8°</div>
+        <div class="device-status good" id="status-badge">
+          <span class="status-dot"></span><span id="status-text">Good posture</span>
+        </div>
+        <div class="device-controls" style="margin-top: 12px; gap: 12px;">
+          <button class="dc-btn good" onclick="setPosture('good')" style="padding: 10px 24px; font-size: 14px;">✓ Upright</button>
+          <button class="dc-btn bad" onclick="setPosture('bad')" style="padding: 10px 24px; font-size: 14px;">✗ Slouch</button>
+        </div>
+        <div class="vib-flash" id="vib-flash" style="margin-top: 8px;">📳 Alert triggered</div>
+      </div>
+      </div>
+      <div class="showcase-text-col">
+        <div class="eyebrow-dark">The device</div>
+        <h2>Premium build.<br><em>Student price.</em></h2>
+        <p class="showcase-desc">Alino arrives in a premium magnetic gift box with everything you need inside. The device itself is compact, matte-finish, and designed to sit invisibly on any shirt collar.</p>
+        <div class="showcase-bullets">
+          <div class="sb-item"><span class="sb-dot"></span>Compact matte-black enclosure</div>
+          <div class="sb-item"><span class="sb-dot"></span>Blue LED indicator light</div>
+          <div class="sb-item"><span class="sb-dot"></span>One-button calibration</div>
+          <div class="sb-item"><span class="sb-dot"></span>Clip-on collar attachment</div>
+          <div class="sb-item"><span class="sb-dot"></span>Premium gift box packaging</div>
+          <div class="sb-item"><span class="sb-dot"></span>USB-C charging cable included</div>
+        </div>
+        <a href="#order" class="btn-hero" style="display:inline-block;margin-top:24px">Order yours →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT FEATURES -->
+<section class="product-section" id="product">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-dark">What makes Alino different</div>
+      <h2>Built around <em>you,</em><br>not a generic average.</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-num">01</div>
+        <div class="feat-icon">🧠</div>
+        <h3>Adaptive calibration</h3>
+        <p>Press the button while sitting correctly — Alino learns your personal posture baseline in five seconds. Not a generic setting. Yours.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">02</div>
+        <div class="feat-icon">📳</div>
+        <h3>Instant vibration alert</h3>
+        <p>The moment you slouch past your threshold, a discreet vibration reminds you — no sound, no distraction to those around you.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">03</div>
+        <div class="feat-icon">📱</div>
+        <h3>Companion app</h3>
+        <p>See your posture score, daily analytics, and session history right on your phone. Know exactly when and how long you slouch.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">04</div>
+        <div class="feat-icon">🔔</div>
+        <h3>Smart notifications</h3>
+        <p>The app sends a push notification when the device detects bad posture — so even when your phone is nearby, you never miss a reminder.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">05</div>
+        <div class="feat-icon">📈</div>
+        <h3>Escalating alerts</h3>
+        <p>Gentle buzz at first, stronger the longer you stay slouched. Your body responds instead of tuning it out — that's the innovation.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">06</div>
+        <div class="feat-icon">🔋</div>
+        <h3>All-day battery</h3>
+        <p>Li-Po rechargeable battery lasts a full day. Charges with USB-C — same cable as your phone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP SECTION -->
+<section class="app-section" id="app">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-dark">The Alino App</div>
+      <h2>Your posture data,<br><em>always with you.</em></h2>
+      <p class="section-sub">The Alino companion app connects to your device and gives you a full picture of your posture habits — with real-time monitoring, daily analytics, and smart push notifications.</p>
+    </div>
+
+    <div class="app-grid">
+
+      <!-- App mock: Dashboard -->
+      <div class="app-mock">
+        <div class="mock-bar">
+          <span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span>
+          <span class="mock-title">Alino App — Dashboard</span>
+        </div>
+        <div class="mock-body dash-mock">
+          <div class="mock-greeting">Good morning, Kasun 👋</div>
+          <div class="mock-score-wrap">
+            <svg width="110" height="110" viewBox="0 0 110 110">
+              <circle cx="55" cy="55" r="46" fill="none" stroke="#1A2A1A" stroke-width="10"/>
+              <circle cx="55" cy="55" r="46" fill="none" stroke="#3B82F6" stroke-width="10"
+                stroke-dasharray="289" stroke-dashoffset="72"
+                stroke-linecap="round" transform="rotate(-90 55 55)"/>
+              <text x="55" y="50" text-anchor="middle" fill="#3B82F6" font-size="22" font-weight="800" font-family="Inter,sans-serif">78</text>
+              <text x="55" y="66" text-anchor="middle" fill="#666" font-size="10" font-family="Inter,sans-serif">posture score</text>
+            </svg>
+          </div>
+          <div class="mock-stats-row">
+            <div class="mock-stat"><div class="ms-val good-col">4h 12m</div><div class="ms-label">Good posture</div></div>
+            <div class="mock-stat"><div class="ms-val warn-col">8</div><div class="ms-label">Alerts today</div></div>
+            <div class="mock-stat"><div class="ms-val good-col">47m</div><div class="ms-label">Best streak</div></div>
+          </div>
+          <div class="mock-chart-label">Today's posture trend</div>
+          <svg width="100%" height="56" viewBox="0 0 260 56" preserveAspectRatio="none">
+            <polyline points="0,40 30,32 60,20 90,28 120,16 150,10 180,22 210,36 240,18 260,24"
+              fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="0,40 30,32 60,20 90,28 120,16 150,10 180,22 210,36 240,18 260,24 260,56 0,56"
+              fill="url(#chartGrad)" stroke="none"/>
+            <defs>
+              <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <!-- App features list -->
+      <div class="app-features">
+        <div class="app-feat">
+          <div class="af-icon">📊</div>
+          <div class="af-body">
+            <h4>Posture analytics dashboard</h4>
+            <p>See your live posture score (0–100), total good posture time, alert count, and your longest good posture streak — all updated in real time as you wear the device.</p>
+          </div>
+        </div>
+        <div class="app-feat">
+          <div class="af-icon">📅</div>
+          <div class="af-body">
+            <h4>Daily, weekly, monthly history</h4>
+            <p>Track your improvement over time with charts showing posture trends across days, weeks, and months. See exactly which times of day your posture drops.</p>
+          </div>
+        </div>
+        <div class="app-feat">
+          <div class="af-icon">🔔</div>
+          <div class="af-body">
+            <h4>Push notifications</h4>
+            <p>When the device detects bad posture, the app sends an instant push notification to your phone — a second layer of reminder for when the vibration alone isn't enough.</p>
+          </div>
+        </div>
+        <div class="app-feat">
+          <div class="af-icon">🏆</div>
+          <div class="af-body">
+            <h4>Goals and streaks</h4>
+            <p>Set daily posture goals and build streaks. The app celebrates milestones and tracks your personal best — turning good posture into a habit you actually keep.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- App mock: Notification -->
+      <div class="app-mock notif-mock-wrap">
+        <div class="mock-bar">
+          <span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span>
+          <span class="mock-title">Alino App — Notifications</span>
+        </div>
+        <div class="mock-body notif-mock">
+          <div class="notif-header">Notifications</div>
+          <div class="notif-item active-notif">
+            <div class="notif-icon">📳</div>
+            <div class="notif-content">
+              <div class="notif-title">Bad posture detected</div>
+              <div class="notif-msg">You've been slouching for 45 seconds. Sit up straight!</div>
+              <div class="notif-time">Just now</div>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div class="notif-icon">📊</div>
+            <div class="notif-content">
+              <div class="notif-title">Daily summary</div>
+              <div class="notif-msg">Today: 78% good posture. 8 alerts. Better than yesterday!</div>
+              <div class="notif-time">6:00 PM</div>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div class="notif-icon">🏆</div>
+            <div class="notif-content">
+              <div class="notif-title">Streak unlocked!</div>
+              <div class="notif-msg">3-day streak achieved. Keep it up!</div>
+              <div class="notif-time">Yesterday</div>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div class="notif-icon">📳</div>
+            <div class="notif-content">
+              <div class="notif-title">Bad posture detected</div>
+              <div class="notif-msg">Slouching detected during your 2PM session.</div>
+              <div class="notif-time">2:14 PM Yesterday</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<section class="howto-section" id="howto">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-dark">How to use Alino</div>
+      <h2>Set up in under<br><em>two minutes.</em></h2>
+      <p class="section-sub">No technical knowledge needed. From box to working in four simple steps.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num-wrap"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-icon">🔋</div>
+          <h3>Charge your device</h3>
+          <p>Connect Alino to power using the included USB-C cable. A full charge takes about one hour and gives you a full day of use. The indicator light turns solid when fully charged.</p>
+          <div class="step-tip">💡 Charge it overnight before your first use</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-wrap"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-icon">📱</div>
+          <h3>Download the Alino app</h3>
+          <p>Install the Alino app on your Android phone. Open the app, create your account, and follow the pairing guide to connect your device via Bluetooth in under a minute.</p>
+          <div class="step-tip">💡 Keep Bluetooth turned on for the best experience</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-wrap"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-icon">👕</div>
+          <h3>Clip it on and calibrate</h3>
+          <p>Clip Alino onto the back of your shirt collar at the base of your neck. Sit in your most comfortable upright position, then press and hold the button for two seconds. Done — it has learned your baseline.</p>
+          <div class="step-tip">💡 Recalibrate if you switch chairs or sitting positions</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-wrap"><div class="step-num">4</div></div>
+        <div class="step-body">
+          <div class="step-icon">🚀</div>
+          <h3>Go back to your day</h3>
+          <p>That's it. Study, work, or game as normal. Alino monitors your posture silently. The moment you slouch, you feel a vibration — and the app sends a notification and logs the session data for your analytics.</p>
+          <div class="step-tip">💡 Check the app at the end of each day to track your progress</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alert types explanation -->
+    <div class="alert-types">
+      <div class="at-header">
+        <h3>How Alino alerts you</h3>
+        <p>Two layers of reminders — so you never miss one.</p>
+      </div>
+      <div class="at-grid">
+        <div class="at-card">
+          <div class="at-icon">📳</div>
+          <h4>Device vibration</h4>
+          <p>The device vibrates immediately when bad posture is detected. Alerts start gentle and escalate the longer you stay slouched — training your body to respond, not ignore.</p>
+          <div class="at-tags">
+            <span class="at-tag">Instant</span>
+            <span class="at-tag">Silent</span>
+            <span class="at-tag">Escalating</span>
+          </div>
+        </div>
+        <div class="at-card featured-at">
+          <div class="at-badge">New</div>
+          <div class="at-icon">🔔</div>
+          <h4>App push notification</h4>
+          <p>When the device detects bad posture, the Alino app sends a push notification to your phone screen — giving you a second, visible reminder with a message and the option to view your analytics.</p>
+          <div class="at-tags">
+            <span class="at-tag">Visible</span>
+            <span class="at-tag">With message</span>
+            <span class="at-tag">Logged</span>
+          </div>
+        </div>
+        <div class="at-card">
+          <div class="at-icon">📊</div>
+          <h4>Analytics log</h4>
+          <p>Every alert is recorded in the app with a timestamp and posture angle. Review your alert history to understand your patterns and see measurable improvement week by week.</p>
+          <div class="at-tags">
+            <span class="at-tag">Time-stamped</span>
+            <span class="at-tag">Tracked</span>
+            <span class="at-tag">Visual charts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs-section">
+  <div class="section-inner specs-inner">
+    <div class="specs-left">
+      <div class="eyebrow-dark">Technical specs</div>
+      <h2>What's inside<br>Alino.</h2>
+      <p class="specs-desc">Built with the same components used in professional wearable devices — chosen for accuracy, reliability, and long product lifespan.</p>
+    </div>
+    <div class="specs-table">
+      <div class="spec-row"><span class="sk">Microcontroller</span><span class="sv">ESP32-C3</span></div>
+      <div class="spec-row"><span class="sk">Motion sensor</span><span class="sv">MPU6050 6-axis IMU</span></div>
+      <div class="spec-row"><span class="sk">Alert method</span><span class="sv">Vibration motor + app notification</span></div>
+      <div class="spec-row"><span class="sk">App platform</span><span class="sv">Android (iOS coming soon)</span></div>
+      <div class="spec-row"><span class="sk">Connectivity</span><span class="sv">Bluetooth (for app) or standalone</span></div>
+      <div class="spec-row"><span class="sk">Dimensions</span><span class="sv">52 × 36 × 15 mm</span></div>
+      <div class="spec-row"><span class="sk">Weight</span><span class="sv">Under 28g</span></div>
+      <div class="spec-row"><span class="sk">Battery</span><span class="sv">Li-Po, rechargeable</span></div>
+      <div class="spec-row"><span class="sk">Charging</span><span class="sv">USB-C</span></div>
+      <div class="spec-row"><span class="sk">Calibration</span><span class="sv">One-button, 5 seconds</span></div>
+      <div class="spec-row"><span class="sk">Made by</span><span class="sv">University of Kelaniya, Sri Lanka</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-dark">What people say</div>
+      <h2>Real feedback<br>from real users.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I didn't realise how bad my posture was until Alino started buzzing every 10 minutes. The app showed me I was slouching most between 2–4pm. After two weeks, the alerts dropped by half."</p>
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">AT</div>
+          <div><div class="reviewer-name">Aiden T.</div><div class="reviewer-role">Computer Science student, Colombo</div></div>
+        </div>
+      </div>
+      <div class="review-card featured-review">
+        <div class="review-badge">Most helpful</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The app notifications are what make it. When I'm deep in studying I miss the vibration — but the phone notification catches me every time. The analytics are genuinely useful too."</p>
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">PS</div>
+          <div><div class="reviewer-name">Priya S.</div><div class="reviewer-role">Engineering student, Kandy</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">"Being able to see the chart of my posture through the day was eye-opening. I had no idea how much I dropped around 3pm every day. Now I take a break and stretch at that time."</p>
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">ML</div>
+          <div><div class="reviewer-name">Marcus L.</div><div class="reviewer-role">Medical student, Gampaha</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The streak system on the app kept me motivated. I hit a 7-day streak and genuinely felt proud of myself. Didn't expect a posture device to feel like a game."</p>
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">SK</div>
+          <div><div class="reviewer-name">Samanthi K.</div><div class="reviewer-role">Office worker, Negombo</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"My afternoon headaches are gone. The app helped me see the connection — every time I had a headache, my posture score had been low for hours before it. Now I catch it early."</p>
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">RJ</div>
+          <div><div class="reviewer-name">Ruwani J.</div><div class="reviewer-role">Law student, Colombo</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">"Setup took less than five minutes including the app. The daily summary notification at 6pm is a nice touch — feels like a coach checking in on you at the end of the day."</p>
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">TN</div>
+          <div><div class="reviewer-name">Tharaka N.</div><div class="reviewer-role">IT professional, Galle</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-light">Pricing</div>
+      <h2 style="color:#fff">Student-built.<br>Student-priced.</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="pc-name">Standard</div>
+        <div class="pc-price">Rs. 3,000</div>
+        <div class="pc-note">One-time payment — no subscription</div>
+        <ul class="pc-features">
+          <li>Alino Smart Posture Device</li>
+          <li>USB-C charging cable</li>
+          <li>Alino Android app (free)</li>
+          <li>Push notifications</li>
+          <li>Posture analytics</li>
+          <li>6-month warranty</li>
+        </ul>
+        <a href="#order" class="pc-btn outline">Order standard</a>
+      </div>
+      <div class="price-card featured-price">
+        <div class="pc-badge">Best value</div>
+        <div class="pc-name">Student bundle</div>
+        <div class="pc-price">Rs. 2,500</div>
+        <div class="pc-note">With valid student ID — limited slots</div>
+        <ul class="pc-features">
+          <li>Alino Smart Posture Device</li>
+          <li>USB-C charging cable</li>
+          <li>Alino Android app (free)</li>
+          <li>Push notifications</li>
+          <li>Posture analytics</li>
+          <li>1-year warranty</li>
+          <li>Priority support</li>
+          <li>Free delivery islandwide</li>
+        </ul>
+        <a href="#order" class="pc-btn filled">Order student bundle</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner faq-inner">
+    <div class="faq-left">
+      <div class="eyebrow-dark">FAQ</div>
+      <h2>Questions<br>answered.</h2>
+      <p class="faq-sub">Can't find your answer? Message us on our Facebook page — <strong>@AlinoDevice</strong></p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I need the app to use Alino? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">No — Alino works completely standalone without the app. The device detects bad posture and vibrates on its own. However, the app adds push notifications, posture analytics, daily history charts, and goal tracking. We recommend using both together for the best experience.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How does the app notification work? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">When the device detects bad posture, it sends a signal via Bluetooth to the Alino app on your phone. The app then immediately pushes a notification to your phone screen saying "Bad posture detected — sit up straight!" You can tap the notification to open the app and see your live posture data.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What analytics does the app show? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">The app shows your real-time posture score (0–100), total good posture time per day, number of alerts triggered, your longest good posture streak, hourly posture trend charts, weekly and monthly progress, and a full log of every alert with its timestamp and posture angle.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Which phones does the app support? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">The Alino app currently supports Android phones running Android 8.0 or higher. iOS (iPhone) support is in development and will be available in a future update.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I calibrate the device? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">Sit in your most comfortable upright position, then press and hold the button on the device for two seconds. You will feel a short double vibration confirming calibration is done. You can also calibrate from the app's calibration screen with a step-by-step guide.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I use Alino without Bluetooth on? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">Yes. The device works fully standalone without Bluetooth. The vibration alerts will still work normally. However, the app notifications and analytics require Bluetooth to be on so the device can sync data to the app.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How long does the battery last? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">The Li-Po battery lasts a full day of normal use — typically 8 to 10 hours. It charges via USB-C and reaches full charge in approximately one hour.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do you deliver islandwide in Sri Lanka? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">Yes. We deliver to all districts in Sri Lanka. Standard delivery takes 3–5 working days. Student bundle orders include free delivery. Standard orders have a delivery fee of Rs. 350.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What payment methods do you accept? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">We accept bank transfer and cash on delivery (COD) for all Sri Lanka orders. Full payment details are sent after your order is confirmed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="order-section" id="order">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow-light">Place your order</div>
+      <h2 style="color:#fff">Order Alino<br>today.</h2>
+      <p style="color:rgba(255,255,255,0.6);font-size:16px;margin-top:8px">Fill in your details and we'll confirm your order within 24 hours.</p>
+    </div>
+    <div class="order-wrap">
+      <div class="order-summary">
+        <h3>Order summary</h3>
+        <div class="summary-option selected-opt" id="sum-standard" onclick="selectPlan('standard')">
+          <div class="sum-radio selected" id="radio-standard"></div>
+          <div class="sum-details">
+            <div class="sum-name">Standard</div>
+            <div class="sum-price">Rs. 3,000</div>
+            <div class="sum-note">Device + app + cable + 6-month warranty</div>
+          </div>
+        </div>
+        <div class="summary-option" id="sum-student" onclick="selectPlan('student')">
+          <div class="sum-radio" id="radio-student"></div>
+          <div class="sum-details">
+            <div class="sum-name">Student bundle <span class="sum-badge">Best value</span></div>
+            <div class="sum-price">Rs. 2,500</div>
+            <div class="sum-note">Device + app + cable + 1yr warranty + free delivery</div>
+          </div>
+        </div>
+        <div class="order-total-row"><span>Subtotal</span><span id="subtotal">Rs. 3,000</span></div>
+        <div class="order-total-row"><span>Delivery</span><span id="delivery-cost">Rs. 350</span></div>
+        <div class="order-total-row total"><span>Total</span><span id="grand-total">Rs. 3,350</span></div>
+        <div class="payment-note">
+          <div class="pn-title">Payment methods</div>
+          <div class="pn-item">🏦 Bank transfer (details on confirmation)</div>
+          <div class="pn-item">🚚 Cash on delivery (COD)</div>
+        </div>
+      </div>
+
+      <form class="order-form" id="order-form" onsubmit="submitOrder(event)">
+        <h3>Your details</h3>
+        <div class="form-row two">
+          <div class="form-group">
+            <label>Full name *</label>
+            <input type="text" id="f-name" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label>Phone number *</label>
+            <input type="tel" id="f-phone" placeholder="07X XXX XXXX" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email address *</label>
+          <input type="email" id="f-email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Delivery address *</label>
+          <textarea id="f-address" rows="3" placeholder="House/flat number, street, city, district" required></textarea>
+        </div>
+        <div class="form-row two">
+          <div class="form-group">
+            <label>District *</label>
+            <select id="f-district" required>
+              <option value="">Select district</option>
+              <option>Colombo</option><option>Gampaha</option><option>Kalutara</option>
+              <option>Kandy</option><option>Matale</option><option>Nuwara Eliya</option>
+              <option>Galle</option><option>Matara</option><option>Hambantota</option>
+              <option>Jaffna</option><option>Kilinochchi</option><option>Mannar</option>
+              <option>Vavuniya</option><option>Mullaitivu</option><option>Batticaloa</option>
+              <option>Ampara</option><option>Trincomalee</option><option>Kurunegala</option>
+              <option>Puttalam</option><option>Anuradhapura</option><option>Polonnaruwa</option>
+              <option>Badulla</option><option>Monaragala</option><option>Ratnapura</option>
+              <option>Kegalle</option>
+            </select>
+          </div>
+          <div class="form-group" id="student-id-group" style="display:none">
+            <label>Student ID / University *</label>
+            <input type="text" id="f-student-id" placeholder="e.g. UOK/MIT/2021/001">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Notes (optional)</label>
+          <textarea id="f-notes" rows="2" placeholder="Any special instructions"></textarea>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="f-agree" required>
+          <label for="f-agree">I agree to the <a href="#faq" style="color:var(--lime)">terms</a> and confirm my details are correct.</label>
+        </div>
+        <button type="submit" class="order-submit">Place order →</button>
+        <p class="form-note">We'll confirm within 24 hours via WhatsApp or email.</p>
+      </form>
+    </div>
+
+    <div class="order-success" id="order-success" style="display:none">
+      <div class="success-icon">✅</div>
+      <h3>Order received!</h3>
+      <p>Thank you for ordering Alino. We'll contact you within 24 hours on the phone number and email you provided to confirm your order and share payment details.</p>
+      <p style="margin-top:12px;font-size:14px;color:rgba(255,255,255,0.5)">Questions? Message us — <strong style="color:rgba(255,255,255,0.8)">@AlinoDevice</strong> on Facebook</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <img src="alino-logo.png" alt="Alino" class="footer-logo-img">
+    <p class="footer-tagline">Sit right. Without thinking about it.</p>
+    <p class="footer-credit">Built by students · University of Kelaniya · Department of Industrial Management</p>
+    <p class="footer-copy">© 2025 Alino. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
